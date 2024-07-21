@@ -44,6 +44,8 @@ import org.osmdroid.views.overlay.Marker;
 
 import java.io.ByteArrayOutputStream;
 
+import Models.RestApiMethods;
+
 public class MainActivity extends AppCompatActivity {
 
     private FusedLocationProviderClient fusedLocationClient;
@@ -167,7 +169,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void enviarDatosAlServidor() {
-        String url = "http://192.168.100.105/crud-examen/postperson2.php";
+        //String url = "http://192.168.100.105/crud-examen/postperson2.php";
+        String url = RestApiMethods.EndpointPostContacto;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JSONObject jsonObject = new JSONObject();

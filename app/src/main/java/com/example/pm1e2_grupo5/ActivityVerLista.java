@@ -40,6 +40,7 @@ import java.util.List;
 
 import Models.Persona;
 import Models.PersonaAdapterGet;
+import Models.RestApiMethods;
 
 public class ActivityVerLista extends AppCompatActivity {
 
@@ -73,7 +74,7 @@ public class ActivityVerLista extends AppCompatActivity {
                 Persona persona = personaList.get(position);
                 int personaId = persona.getId();
                 String lat = persona.getLatitud();
-                Toast.makeText(ActivityVerLista.this, "ID de la persona: " + personaId+" "+lat, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ActivityVerLista.this, "ID de la persona: " + personaId+" "+lat, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -149,7 +150,8 @@ public class ActivityVerLista extends AppCompatActivity {
 
 
     private void fetchPersonas() {
-        String url = "http://192.168.100.105/crud-examen/getperson.php"; // Cambia esta URL por la de tu API
+        //String url = "http://192.168.100.105/crud-examen/getperson.php"; // Cambia esta URL por la de tu API
+        String url = RestApiMethods.EndpointGetContacto;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -202,7 +204,8 @@ public class ActivityVerLista extends AppCompatActivity {
         if (position != ListView.INVALID_POSITION) {
             Persona persona = personaList.get(position);
             int personaId = persona.getId();
-            String url = "http://192.168.100.105/crud-examen/deleteperson2.php?id=" + personaId;
+            //String url = "http://192.168.100.105/crud-examen/deleteperson2.php?id=" + personaId;
+            String url = RestApiMethods.EndpointDeleteContacto + personaId;
 
             StringRequest stringRequest = new StringRequest(
                 Request.Method.DELETE,
@@ -244,7 +247,8 @@ public class ActivityVerLista extends AppCompatActivity {
     }
 
     private void searchPersonas(String query) {
-        String url = "http://192.168.100.105/crud-examen/bgetperson.php?query=" + Uri.encode(query);
+        //String url = "http://192.168.100.105/crud-examen/bgetperson.php?query=" + Uri.encode(query);
+        String url = RestApiMethods.EndpointBGETContacto + Uri.encode(query);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 url,

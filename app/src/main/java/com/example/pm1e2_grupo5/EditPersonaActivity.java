@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Models.Persona;
+import Models.RestApiMethods;
 
 public class EditPersonaActivity extends AppCompatActivity {
 
@@ -79,7 +80,8 @@ public class EditPersonaActivity extends AppCompatActivity {
     }
 
     private void updatePersona(Persona persona) {
-        String url = "http://192.168.100.105/crud-examen/updateperson.php";
+        //String url = "http://192.168.100.105/crud-examen/updateperson.php";
+        String url = RestApiMethods.EndpointUpdateContacto;
 
         // Crear el objeto JSON con los datos a actualizar
         JSONObject jsonObject = new JSONObject();
